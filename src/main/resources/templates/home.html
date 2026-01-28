@@ -2,183 +2,351 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-  <!-- Basic -->
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <!-- Mobile Metas -->
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-  <!-- Site Metas -->
-  <meta name="keywords" content="" />
-  <meta name="description" content="" />
-  <meta name="author" content="" />
-  <link rel="shortcut icon" href="images/favicon.png" type="">
+    <!-- Basic -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <!-- Site Metas -->
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <link rel="shortcut icon" th:href="@{/images/favicon.png}" type="">
 
-  <title> Feane </title>
+    <title> Feane </title>
 
-  <!-- bootstrap core css -->
-  <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+    <!-- bootstrap core css -->
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.css}" />
 
-  <!--owl slider stylesheet -->
-  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
-  <!-- nice select  -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/css/nice-select.min.css" integrity="sha512-CruCP+TD3yXzlvvijET8wV5WxxEh5H8P4cmz0RFbKK6FlZ2sYl3AEsKlLPHbniXKSrDdFewhbmBK5skbdsASbQ==" crossorigin="anonymous" />
-  <!-- font awesome style -->
-  <link href="css/font-awesome.min.css" rel="stylesheet" />
+    <!--owl slider stylesheet -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+    <!-- nice select  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/css/nice-select.min.css" integrity="sha512-CruCP+TD3yXzlvvijET8wV5WxxEh5H8P4cmz0RFbKK6FlZ2sYl3AEsKlLPHbniXKSrDdFewhbmBK5skbdsASbQ==" crossorigin="anonymous" />
+    <!-- font awesome style -->
+    <link rel="stylesheet" th:href="@{/css/font-awesome.min.css}" />
 
-  <!-- Custom styles for this template -->
-  <link href="css/style.css" rel="stylesheet" />
-  <!-- responsive style -->
-  <link href="css/responsive.css" rel="stylesheet" />
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+    <!-- responsive style -->
+    <link rel="stylesheet" th:href="@{/css/responsive.css}" />
 
 </head>
 
-<body>
+<body class="sub_page">
 
-  <div class="hero_area">
+<div class="hero_area">
     <div class="bg-box">
-      <img src="images/hero-bg.jpg" alt="">
+        <img th:src="@{/images/hero-bg.jpg}" alt="">
     </div>
     <!-- header section strats -->
-   <div th:replace = "fragments/header :: header" ></div>
+    <div th:replace = "fragments/header :: header"></div>
     <!-- end header section -->
-    <!-- slider section -->
-    <section class="slider_section ">
-      <div id="customCarousel1" class="carousel slide" data-ride="carousel">
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <div class="container ">
-              <div class="row">
-                <div class="col-md-7 col-lg-6 ">
-                  <div class="detail-box">
+</div>
+
+
+
+<!-- poet banner section -->
+<section class="slider_section">
+    <div class="container">
+        <div class="row align-items-center">
+
+            <div class="col-md-6">
+                <div class="detail-box">
                     <h1>
-                      Fast Food Restaurant
+                        Poetry & Thoughts<br>
+                        <span style="color:#ffbe33;">From My Inner World</span>
                     </h1>
                     <p>
-                      Doloremque, itaque aperiam facilis rerum, commodi, temporibus sapiente ad mollitia laborum quam quisquam esse error unde. Tempora ex doloremque, labore, sunt repellat dolore, iste magni quos nihil ducimus libero ipsam.
+                        A space where emotions turn into words,
+                        and words turn into stories worth sharing.
                     </p>
+
                     <div class="btn-box">
-                      <a href="" class="btn1">
-                        Order Now
-                      </a>
+                        <a th:href="@{/user/profile}" class="btn1">
+                            View Profile
+                        </a>
+                        <a th:href="@{/blogs}" class="btn1 ml-2">
+                            All Blogs
+                        </a>
                     </div>
-                  </div>
                 </div>
-              </div>
             </div>
-          </div>
-          <div class="carousel-item ">
-            <div class="container ">
-              <div class="row">
-                <div class="col-md-7 col-lg-6 ">
-                  <div class="detail-box">
-                    <h1>
-                      Fast Food Restaurant
-                    </h1>
-                    <p>
-                      Doloremque, itaque aperiam facilis rerum, commodi, temporibus sapiente ad mollitia laborum quam quisquam esse error unde. Tempora ex doloremque, labore, sunt repellat dolore, iste magni quos nihil ducimus libero ipsam.
-                    </p>
-                    <div class="btn-box">
-                      <a href="" class="btn1">
-                        Order Now
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
+
+            <div class="col-md-6 text-center">
+                <img th:src="@{/images/poet.png}"
+                     alt="Poet"
+                     style="max-width: 75%; border-radius: 20px;">
             </div>
-          </div>
-          <div class="carousel-item">
-            <div class="container ">
-              <div class="row">
-                <div class="col-md-7 col-lg-6 ">
-                  <div class="detail-box">
-                    <h1>
-                      Fast Food Restaurant
-                    </h1>
-                    <p>
-                      Doloremque, itaque aperiam facilis rerum, commodi, temporibus sapiente ad mollitia laborum quam quisquam esse error unde. Tempora ex doloremque, labore, sunt repellat dolore, iste magni quos nihil ducimus libero ipsam.
-                    </p>
-                    <div class="btn-box">
-                      <a href="" class="btn1">
-                        Order Now
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="container">
-          <ol class="carousel-indicators">
-            <li data-target="#customCarousel1" data-slide-to="0" class="active"></li>
-            <li data-target="#customCarousel1" data-slide-to="1"></li>
-            <li data-target="#customCarousel1" data-slide-to="2"></li>
-          </ol>
-        </div>
-      </div>
 
-    </section>
-    <!-- end slider section -->
-  </div>
-
-    <!-- about section -->
-
-  <section class="about_section layout_padding">
-    <div class="container  ">
-
-      <div class="row">
-        <div class="col-md-6 ">
-          <div class="img-box">
-            <img src="images/about-img.png" alt="">
-          </div>
         </div>
-        <div class="col-md-6">
-          <div class="detail-box">
-            <div class="heading_container">
-              <h2>
-                We Are Feane
-              </h2>
-            </div>
-            <p>
-              There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration
-              in some form, by injected humour, or randomised words which don't look even slightly believable. If you
-              are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in
-              the middle of text. All
-            </p>
-            <a href="">
-              Read More
-            </a>
-          </div>
-        </div>
-      </div>
     </div>
-  </section>
-
-  <!-- end about section -->
-
-  <!-- footer section -->
- <div th:replace="fragments/footer :: footer"></div>
-  <!-- footer section -->
-
-  <!-- jQery -->
-  <script src="js/jquery-3.4.1.min.js"></script>
-  <!-- popper js -->
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
-  </script>
-  <!-- bootstrap js -->
-  <script src="js/bootstrap.js"></script>
-  <!-- owl slider -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js">
-  </script>
-  <!-- isotope js -->
-  <script src="https://unpkg.com/isotope-layout@3.0.4/dist/isotope.pkgd.min.js"></script>
-  <!-- nice select -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js"></script>
-  <!-- custom js -->
-  <script src="js/custom.js"></script>
+</section>
+<!-- end poet banner section -->
 
 
+<section class="book_section layout_padding bg-light">
+    <div class="container">
+
+        <div class="heading_container heading_center mb-4">
+            <h2>My Blogs ✍️</h2>
+            <p>Your thoughts, your voice</p>
+        </div>
+
+        <div class="row">
+
+            <!-- Card 1 -->
+            <div class="col-md-3 mb-4">
+                <div class="card blog-card h-100 shadow-sm border-0">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">Midnight Letters</h5>
+                        <p class="text-muted">by You</p>
+                        <p class="card-text text-secondary">
+                            Some nights write themselves,
+                            some nights wait for courage to speak...
+                        </p>
+
+                        <div class="mt-auto">
+                            <div class="d-flex justify-content-between mb-3">
+                                <span class="text-danger">
+                                    <i class="fa fa-heart"></i> 24
+                                </span>
+                                <span class="text-muted">
+                                    <i class="fa fa-comment"></i> 6
+                                </span>
+                            </div>
+                            <a href="/blogs/1" class="btn btn-outline-primary btn-sm btn-block">
+                                Read Blog
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="col-md-3 mb-4">
+                <div class="card blog-card h-100 shadow-sm border-0">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">The Quiet Between Us</h5>
+                        <p class="text-muted">by You</p>
+                        <p class="card-text text-secondary">
+                            Silence speaks loudest when emotions
+                            have no voice left to speak...
+                        </p>
+
+                        <div class="mt-auto">
+                            <div class="d-flex justify-content-between mb-3">
+                                <span class="text-danger">
+                                    <i class="fa fa-heart"></i> 31
+                                </span>
+                                <span class="text-muted">
+                                    <i class="fa fa-comment"></i> 9
+                                </span>
+                            </div>
+                            <a href="/blogs/2" class="btn btn-outline-primary btn-sm btn-block">
+                                Read Blog
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="col-md-3 mb-4">
+                <div class="card blog-card h-100 shadow-sm border-0">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">Unsaid Feelings</h5>
+                        <p class="text-muted">by You</p>
+                        <p class="card-text text-secondary">
+                            Some feelings live quietly
+                            between breaths and pauses...
+                        </p>
+
+                        <div class="mt-auto">
+                            <div class="d-flex justify-content-between mb-3">
+                                <span class="text-danger">
+                                    <i class="fa fa-heart"></i> 18
+                                </span>
+                                <span class="text-muted">
+                                    <i class="fa fa-comment"></i> 4
+                                </span>
+                            </div>
+                            <a href="/blogs/3" class="btn btn-outline-primary btn-sm btn-block">
+                                Read Blog
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="col-md-3 mb-4">
+                <div class="card blog-card h-100 shadow-sm border-0">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">Pages I Never Sent</h5>
+                        <p class="text-muted">by You</p>
+                        <p class="card-text text-secondary">
+                            Words written but never delivered,
+                            still heavy with meaning...
+                        </p>
+
+                        <div class="mt-auto">
+                            <div class="d-flex justify-content-between mb-3">
+                                <span class="text-danger">
+                                    <i class="fa fa-heart"></i> 42
+                                </span>
+                                <span class="text-muted">
+                                    <i class="fa fa-comment"></i> 11
+                                </span>
+                            </div>
+                            <a href="/blogs/4" class="btn btn-outline-primary btn-sm btn-block">
+                                Read Blog
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section class="book_section layout_padding bg-light">
+    <div class="container">
+
+        <div class="heading_container heading_center">
+            <h2>Recent Blogs</h2>
+            <p>Six latest thoughts — one page at a time</p>
+        </div>
+
+        <div class="row">
+
+            <!-- Blog Card -->
+            <div class="col-md-4 mb-4">
+                <div class="box h-100">
+                    <div class="detail-box">
+
+                        <h5>Midnight Letters</h5>
+
+                        <p class="text-muted">
+                            by <a th:href="@{/profile/pooja}">Pooja</a>
+                        </p>
+
+                        <p>
+                            Some nights write themselves,
+                            some nights wait for courage to speak...
+                        </p>
+
+                        <!-- blog actions -->
+                        <div class="d-flex justify-content-between align-items-center mt-3">
+
+                            <div>
+                                <a href="#" class="mr-3 text-danger">
+                                    <i class="fa fa-heart"></i> 24
+                                </a>
+                                <a href="#" class="mr-3 text-secondary">
+                                    <i class="fa fa-thumbs-down"></i>
+                                </a>
+                                <a href="#" class="mr-3">
+                                    <i class="fa fa-comment"></i> 6
+                                </a>
+                                <a href="#">
+                                    <i class="fa fa-share"></i>
+                                </a>
+                            </div>
+
+                            <a th:href="@{/blogs/1}"
+                               class="btn btn-sm btn-outline-primary">
+                                Read
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Duplicate same card → total 6 cards per page -->
+
+            <div class="col-md-4 mb-4">
+                <div class="box h-100">
+                    <div class="detail-box">
+
+                        <h5>The Quiet Between Us</h5>
+                        <p class="text-muted">
+                            by <a th:href="@{/profile/pooja}">Pooja</a>
+                        </p>
+
+                        <p>
+                            Silence speaks loudest
+                            when emotions have no voice...
+                        </p>
+
+                        <div class="d-flex justify-content-between align-items-center mt-3">
+                            <div>
+                                <a href="#" class="mr-3 text-danger">
+                                    <i class="fa fa-heart"></i> 31
+                                </a>
+                                <a href="#" class="mr-3 text-secondary">
+                                    <i class="fa fa-thumbs-down"></i>
+                                </a>
+                                <a href="#" class="mr-3">
+                                    <i class="fa fa-comment"></i> 9
+                                </a>
+                                <a href="#">
+                                    <i class="fa fa-share"></i>
+                                </a>
+                            </div>
+                            <a th:href="@{/blogs/2}" class="btn btn-sm btn-outline-primary">
+                                Read
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- add 4 more cards like this -->
+
+        </div>
+
+        <!-- pagination -->
+        <div class="row mt-4">
+            <div class="col text-center">
+                <a th:href="@{/blogs?page=0}"
+                   class="btn btn-outline-secondary btn-sm mr-2">
+                    Previous
+                </a>
+                <a th:href="@{/blogs?page=1}"
+                   class="btn btn-outline-secondary btn-sm">
+                    Next
+                </a>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- footer section -->
+<div th:replace="fragments/footer::footer"></div>
+<!-- footer section -->
+
+
+<!--query links-->
+<!-- jQery -->
+<script th:src="@{/js/jquery-3.4.1.min.js}"></script>
+<!-- popper js -->
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+</script>
+<!-- bootstrap js -->
+<script th:src="@{/js/bootstrap.js}"></script>
+<!-- owl slider -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js">
+</script>
+<!-- isotope js -->
+<script src="https://unpkg.com/isotope-layout@3.0.4/dist/isotope.pkgd.min.js"></script>
+<!-- nice select -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js"></script>
+<!-- custom js -->
+<script th:src="@{/js/custom.js}"></script>
 </body>
 
 </html>

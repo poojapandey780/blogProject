@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
@@ -21,14 +22,14 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf(Customizer -> Customizer.disable())
                 .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/user/login", "/register","/css/**", "/js/**", "/images/**").permitAll()
+                .requestMatchers("/user/login", "/user/register","/css/**", "/js/**", "/images/**").permitAll()
                 .anyRequest().authenticated()
         )
                 .formLogin(form -> form
                         .loginPage("/user/login")
                         .usernameParameter("email")
-                        .defaultSuccessUrl("/dashboard", true)
-                );;
+                        .defaultSuccessUrl("/user/home", true)
+                );
                 return http.build();
     }
 
@@ -38,7 +39,7 @@ public class SecurityConfig {
     public AuthenticationProvider authenticationProvider()
     {
         DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
-        provider.setPasswordEncoder(NoOpPasswordEncoder.getInstance());
+        provider.setPasswordEncoder(new BCryptPasswordEncoder(10));
         provider.setUserDetailsService(userDetailService);
         return provider;
     }

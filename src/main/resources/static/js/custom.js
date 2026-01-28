@@ -29,42 +29,38 @@ $(window).on('load', function () {
     })
 });
 
-// nice select
-$(document).ready(function() {
-    $('select').niceSelect();
-  });
 
-/** google_map js **/
-function myMap() {
-    var mapProp = {
-        center: new google.maps.LatLng(40.712775, -74.005973),
-        zoom: 18,
-    };
-    var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
-}
 
-// client section owl carousel
-$(".client_owl-carousel").owlCarousel({
-    loop: true,
-    margin: 0,
-    dots: false,
-    nav: true,
-    navText: [],
-    autoplay: true,
-    autoplayHoverPause: true,
-    navText: [
-        '<i class="fa fa-angle-left" aria-hidden="true"></i>',
-        '<i class="fa fa-angle-right" aria-hidden="true"></i>'
-    ],
-    responsive: {
-        0: {
-            items: 1
-        },
-        768: {
-            items: 2
-        },
-        1000: {
-            items: 2
-        }
+//for penNmae check
+
+    const penNameInput = document.getElementById("penName");
+    const penNameMsg = document.getElementById("penNameMsg");
+
+    function checkPenName() {
+        const penName = penNameInput.value.trim();
+        if (!penName) return;
+
+        fetch(`/user/check-penname?penName=${penName}`)
+            .then(res => res.json())
+            .then(data => {
+                if (data.available) {
+                    penNameMsg.textContent = "Pen name is available ✔";
+                    penNameMsg.className = "text-success";
+                } else {
+                    penNameMsg.textContent = "Pen name already taken ✖";
+                    penNameMsg.className = "text-danger";
+                }
+            });
     }
-});
+
+    // When user presses Enter
+    penNameInput.addEventListener("keydown", function (e) {
+        if (e.key === "Enter") {
+            e.preventDefault();
+            checkPenName();
+        }
+    });
+
+    // When user leaves the field
+    penNameInput.addEventListener("blur", checkPenName);
+

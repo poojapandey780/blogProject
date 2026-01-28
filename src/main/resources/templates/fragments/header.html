@@ -10,10 +10,11 @@
 <header class="header_section" th:fragment = "header">
     <div class="container">
         <nav class="navbar navbar-expand-lg custom_nav-container ">
-            <a class="navbar-brand" href="index.html">
-            <span>
-              Feane
-            </span>
+            <a class="navbar-brand" th:href="@{/user/home}">
+                <span th:text="${loggedInUser != null ? loggedInUser.userName : 'Feane'}" >
+                Feane
+                </span>
+
             </a>
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -23,14 +24,28 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav  mx-auto ">
                     <li class="nav-item active">
-                        <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" th:href="@{/user/home}">Home <span class="sr-only">(current)</span></a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="menu.html">login</a>
+                    <li class="nav-item active">
+                        <a class="nav-link" th:href="@{/user/profile}">profile <span class="sr-only">(current)</span></a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="about.html">Register</a>
+                    <li class="nav-item" th:if="${loggedInUser == null}">
+                        <a class="nav-link"th:href="@{/user/login}">login</a>
                     </li>
+                    <li class="nav-item" th:if="${loggedInUser == null}">
+                        <a class="nav-link" th:href="@{/user/register}">Register</a>
+                    </li>
+                    <li class="nav-item" th:if="${loggedInUser != null}">
+                        <form th:action="@{/logout}"
+                              method="post"
+                              class="logout-form">
+                            <button type="submit" class="logout-link">
+                                Logout
+                            </button>
+                        </form>
+                    </li>
+
+
                 </ul>
                 </div>
         </nav>
