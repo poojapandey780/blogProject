@@ -76,7 +76,7 @@
             </div>
 
             <div class="card-body">
-                <form method="Post" th:action="@{/user/profile/update/personalInfo}" th:object="${updateUser}" >
+                <form id="profileForm" method="Post" th:action="@{/user/profile/update/personalInfo}" th:object="${updateUser}" >
 
                     <div class="form-group">
                         <label>Pen Name</label>
@@ -93,9 +93,18 @@
                                   th:field="*{bio}"></textarea>
                     </div>
 
-                    <button class="btn btn-warning">
-                        Save Profile
-                    </button>
+                    <!-- Button + Success message row -->
+                    <div class="d-flex align-items-center mt-3">
+                        <button class="btn btn-warning">
+                            Save Profile
+                        </button>
+
+                        <!-- Success message -->
+                        <div id="successMessage" class="alert alert-success mb-0 ml-3 py-1 px-2 small" style="display:none;">
+                            Profile saved successfully!
+                        </div>
+                    </div>
+
                 </form>
             </div>
         </div>
@@ -140,7 +149,7 @@
                     <h6>Change Password</h6>
 
                     <input type="password" class="form-control mb-2"
-                           placeholder="Current password" th:text="${loggedInUser.password}">
+                           placeholder="Current password" th:value="${loggedInUser.password}">
 
                     <input type="password" class="form-control mb-2"
                            placeholder="New password" >

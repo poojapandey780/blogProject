@@ -1,5 +1,7 @@
 package com.pooja.blogProject.controller;
 
+import com.pooja.blogProject.dto.AccountInfoDto;
+import com.pooja.blogProject.dto.PasswordDto;
 import com.pooja.blogProject.dto.PersonalInfoDto;
 import com.pooja.blogProject.model.User;
 import com.pooja.blogProject.model.UserPrincipal;
@@ -54,10 +56,21 @@ public class UserController {
 
 //
     @GetMapping("/profile")
-    public String profilePage(Model model)
+    public String profilePage(Model model, Authentication authentication)
     {
+
+        User user = ((UserPrincipal) authentication.getPrincipal()).getUser();
+
         PersonalInfoDto dto = new PersonalInfoDto();
+        dto.setPenName(user.getPenName());
+        dto.setBio(user.getBio());
+
+        AccountInfoDto accountInfoDto = new AccountInfoDto();
+        PasswordDto passwordDto = new PasswordDto();
+
         model.addAttribute("updateUser",dto);
+        model.addAttribute("accountInfoDto",accountInfoDto);
+        model.addAttribute("passwordDto",passwordDto);
         return "profile";
     }
 

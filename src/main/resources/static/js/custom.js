@@ -53,7 +53,9 @@ $(window).on('load', function () {
             });
     }
 
-    // When user presses Enter
+
+
+// When user presses Enter
     penNameInput.addEventListener("keydown", function (e) {
         if (e.key === "Enter") {
             e.preventDefault();
@@ -64,3 +66,37 @@ $(window).on('load', function () {
     // When user leaves the field
     penNameInput.addEventListener("blur", checkPenName);
 
+
+
+    //for error message
+document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('profileForm');
+    const successMsg = document.getElementById('successMessage');
+
+    form.addEventListener('submit', function(e) {
+        e.preventDefault(); // prevent default form submit
+
+        const formData = new FormData(form);
+
+        fetch(form.action, {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest'
+            }
+        })
+            .then(response => {
+                if(response.ok){
+                    // Show success message
+                    successMsg.style.display = 'block';
+                    // Hide after 2 seconds
+                    setTimeout(() => {
+                        successMsg.style.display = 'none';
+                    }, 2000);
+                } else {
+                    console.error('Error saving profile');
+                }
+            })
+            .catch(error => console.error('Error:', error));
+    });
+});

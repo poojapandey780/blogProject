@@ -1,5 +1,6 @@
 package com.pooja.blogProject.service;
 
+import com.pooja.blogProject.dto.PersonalInfoDto;
 import com.pooja.blogProject.model.User;
 import com.pooja.blogProject.repository.UserRepository;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -31,6 +32,13 @@ public class UserService {
     public boolean existsByPenName(String penname)
     {
         return userRepository.existsByPenName(penname);
+    }
+
+    public void updatePersonalInfo(User user, PersonalInfoDto dto)
+    {
+        user.setPenName(dto.getPenName());
+        user.setBio(dto.getBio());
+        userRepository.save(user);
     }
 
 }
