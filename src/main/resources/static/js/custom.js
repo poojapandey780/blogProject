@@ -36,36 +36,38 @@ $(window).on('load', function () {
     const penNameInput = document.getElementById("penName");
     const penNameMsg = document.getElementById("penNameMsg");
 
-    function checkPenName() {
-        const penName = penNameInput.value.trim();
-        if (!penName) return;
+    if (penNameInput) {
+        function checkPenName() {
+            const penName = penNameInput.value.trim();
+            if (!penName) return;
 
-        fetch(`/user/check-penname?penName=${penName}`)
-            .then(res => res.json())
-            .then(data => {
-                if (data.available) {
-                    penNameMsg.textContent = "Pen name is available ✔";
-                    penNameMsg.className = "text-success";
-                } else {
-                    penNameMsg.textContent = "Pen name already taken ✖";
-                    penNameMsg.className = "text-danger";
-                }
-            });
-    }
-
-
-
-// When user presses Enter
-    penNameInput.addEventListener("keydown", function (e) {
-        if (e.key === "Enter") {
-            e.preventDefault();
-            checkPenName();
+            fetch(`/user/check-penname?penName=${penName}`)
+                .then(res => res.json())
+                .then(data => {
+                    if (data.available) {
+                        penNameMsg.textContent = "Pen name is available ✔";
+                        penNameMsg.className = "text-success";
+                    } else {
+                        penNameMsg.textContent = "Pen name already taken ✖";
+                        penNameMsg.className = "text-danger";
+                    }
+                });
         }
-    });
 
-    // When user leaves the field
-    penNameInput.addEventListener("blur", checkPenName);
+        penNameInput.addEventListener("keydown", e => {
+            if (e.key === "Enter") {
+                e.preventDefault();
+                checkPenName();
+            }
+        });
 
+        penNameInput.addEventListener("blur", checkPenName);
+
+        penNameInput.addEventListener("input", () => {
+            penNameMsg.textContent = "";
+            penNameMsg.className = "";
+        });
+    }
 
 
     //for error message
@@ -75,6 +77,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     form.addEventListener('submit', function(e) {
         e.preventDefault(); // prevent default form submit
+         penNameMsg.textContent = "";
+         penNameMsg.className = "";
+
+
 
         const formData = new FormData(form);
 
@@ -100,3 +106,11 @@ document.addEventListener('DOMContentLoaded', () => {
             .catch(error => console.error('Error:', error));
     });
 });
+
+
+
+
+
+
+
+
