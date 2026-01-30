@@ -46,6 +46,11 @@ public class ProfileController {
     public String updateImg(@RequestParam("image") MultipartFile image,Authentication authentication) {
         String email= authentication.getName();
         imgService.updateProfileImage(email,image);
-        return "profile";
+
+
+        // now fetch the latest image and show to the profile page
+//        imgService.getProfileImage(email,image);
+
+        return "redirect:/user/profile";
     }
 }

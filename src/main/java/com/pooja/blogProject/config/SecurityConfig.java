@@ -22,7 +22,22 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf(Customizer -> Customizer.disable())
                 .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/user/login", "/user/register","/css/**", "/js/**", "/images/**", "/user/forgotPassword","/user/verifyOtp","/user/resetPassword").permitAll()
+                .requestMatchers(
+                        "/user/login",
+                        "/user/register",
+                        "/user/forgotPassword",
+                        "/user/verifyOtp",
+                        "/user/resetPassword",
+                        "/user/blog",
+                        "/user/blog/**",
+                        // 🔓 static resources
+                        "/css/**",
+                        "/js/**",
+                        "/images/**",
+
+                        // 🔓 uploaded images (VERY IMPORTANT)
+                        "/img/**"
+                ).permitAll()
                 .anyRequest().authenticated()
         )
                 .formLogin(form -> form

@@ -98,7 +98,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     // Hide after 2 seconds
                     setTimeout(() => {
                         successMsg.style.display = 'none';
-                    }, 2000);
+                        window.location.href = "/user/profile";
+                    }, 1000);
                 } else {
                     console.error('Error saving profile');
                 }
@@ -106,6 +107,12 @@ document.addEventListener('DOMContentLoaded', () => {
             .catch(error => console.error('Error:', error));
     });
 });
+
+
+
+
+
+
 
 
 

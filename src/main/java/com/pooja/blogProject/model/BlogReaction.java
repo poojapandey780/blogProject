@@ -4,6 +4,7 @@ import com.pooja.blogProject.EnumModel.ReactionType;
 import jakarta.persistence.*;
 
 @Entity
+@Table(name ="UBlogReaction")
 public class BlogReaction {
 
     @Id

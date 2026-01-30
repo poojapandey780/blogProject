@@ -62,8 +62,8 @@
                     </p>
 
                     <div class="btn-box">
-                        <a th:href="@{/user/profile}" class="btn1">
-                            View Profile
+                        <a th:href="@{/user/blog/}" class="btn1">
+                            create
                         </a>
                         <a th:href="@{/blogs}" class="btn1 ml-2">
                             All Blogs
@@ -92,123 +92,59 @@
             <p>Your thoughts, your voice</p>
         </div>
 
-        <div class="row">
-
-            <!-- Card 1 -->
-            <div class="col-md-3 mb-4">
-                <div class="card blog-card h-100 shadow-sm border-0">
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title">Midnight Letters</h5>
-                        <p class="text-muted">by You</p>
-                        <p class="card-text text-secondary">
-                            Some nights write themselves,
-                            some nights wait for courage to speak...
-                        </p>
-
-                        <div class="mt-auto">
-                            <div class="d-flex justify-content-between mb-3">
-                                <span class="text-danger">
-                                    <i class="fa fa-heart"></i> 24
-                                </span>
-                                <span class="text-muted">
-                                    <i class="fa fa-comment"></i> 6
-                                </span>
-                            </div>
-                            <a href="/blogs/1" class="btn btn-outline-primary btn-sm btn-block">
-                                Read Blog
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Card 2 -->
-            <div class="col-md-3 mb-4">
-                <div class="card blog-card h-100 shadow-sm border-0">
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title">The Quiet Between Us</h5>
-                        <p class="text-muted">by You</p>
-                        <p class="card-text text-secondary">
-                            Silence speaks loudest when emotions
-                            have no voice left to speak...
-                        </p>
-
-                        <div class="mt-auto">
-                            <div class="d-flex justify-content-between mb-3">
-                                <span class="text-danger">
-                                    <i class="fa fa-heart"></i> 31
-                                </span>
-                                <span class="text-muted">
-                                    <i class="fa fa-comment"></i> 9
-                                </span>
-                            </div>
-                            <a href="/blogs/2" class="btn btn-outline-primary btn-sm btn-block">
-                                Read Blog
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Card 3 -->
-            <div class="col-md-3 mb-4">
-                <div class="card blog-card h-100 shadow-sm border-0">
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title">Unsaid Feelings</h5>
-                        <p class="text-muted">by You</p>
-                        <p class="card-text text-secondary">
-                            Some feelings live quietly
-                            between breaths and pauses...
-                        </p>
-
-                        <div class="mt-auto">
-                            <div class="d-flex justify-content-between mb-3">
-                                <span class="text-danger">
-                                    <i class="fa fa-heart"></i> 18
-                                </span>
-                                <span class="text-muted">
-                                    <i class="fa fa-comment"></i> 4
-                                </span>
-                            </div>
-                            <a href="/blogs/3" class="btn btn-outline-primary btn-sm btn-block">
-                                Read Blog
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Card 4 -->
-            <div class="col-md-3 mb-4">
-                <div class="card blog-card h-100 shadow-sm border-0">
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title">Pages I Never Sent</h5>
-                        <p class="text-muted">by You</p>
-                        <p class="card-text text-secondary">
-                            Words written but never delivered,
-                            still heavy with meaning...
-                        </p>
-
-                        <div class="mt-auto">
-                            <div class="d-flex justify-content-between mb-3">
-                                <span class="text-danger">
-                                    <i class="fa fa-heart"></i> 42
-                                </span>
-                                <span class="text-muted">
-                                    <i class="fa fa-comment"></i> 11
-                                </span>
-                            </div>
-                            <a href="/blogs/4" class="btn btn-outline-primary btn-sm btn-block">
-                                Read Blog
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+        <div class="row" id="blogContainer">
+            <div th:replace="fragments/blog-cards :: blog-cards"></div>
         </div>
+
+        <!-- pagination -->
+<!--        <div class="row mt-4" th:if="${totalPages > 1}">-->
+<!--            <div class="col text-center">-->
+
+<!--                &lt;!&ndash; Previous &ndash;&gt;-->
+<!--                <a th:if="${currentPage > 0}"-->
+<!--                   th:href="@{/user/home(page=${currentPage - 1})}"-->
+<!--                   class="btn btn-outline-secondary btn-sm mr-2">-->
+<!--                    Previous-->
+<!--                </a>-->
+
+<!--                &lt;!&ndash; Page numbers &ndash;&gt;-->
+<!--                <span th:each="i : ${#numbers.sequence(0, totalPages - 1)}">-->
+<!--            <a th:href="@{/user/home(page=${i})}"-->
+<!--               th:text="${i + 1}"-->
+<!--               th:classappend="${i == currentPage} ? 'btn-primary' : 'btn-outline-secondary'"-->
+<!--               class="btn btn-sm mx-1">-->
+<!--            </a>-->
+<!--        </span>-->
+
+<!--                &lt;!&ndash; Next &ndash;&gt;-->
+<!--                <a th:if="${currentPage < totalPages - 1}"-->
+<!--                   th:href="@{/user/home(page=${currentPage + 1})}"-->
+<!--                   class="btn btn-outline-secondary btn-sm ml-2">-->
+<!--                    Next-->
+<!--                </a>-->
+
+<!--            </div>-->
+<!--        </div>-->
+        <div class="row mt-4">
+            <div class="col text-center">
+
+                <button class="btn btn-outline-secondary btn-sm"
+                        onclick="loadBlogs(currentPage - 1)">
+                    Previous
+                </button>
+
+                <button class="btn btn-outline-secondary btn-sm"
+                        onclick="loadBlogs(currentPage + 1)">
+                    Next
+                </button>
+
+            </div>
+        </div>
+
     </div>
 </section>
+
+
 
 <section class="book_section layout_padding bg-light">
     <div class="container">
@@ -307,21 +243,6 @@
             <!-- add 4 more cards like this -->
 
         </div>
-
-        <!-- pagination -->
-        <div class="row mt-4">
-            <div class="col text-center">
-                <a th:href="@{/blogs?page=0}"
-                   class="btn btn-outline-secondary btn-sm mr-2">
-                    Previous
-                </a>
-                <a th:href="@{/blogs?page=1}"
-                   class="btn btn-outline-secondary btn-sm">
-                    Next
-                </a>
-            </div>
-        </div>
-
     </div>
 </section>
 
@@ -330,23 +251,30 @@
 <!-- footer section -->
 
 
+<!--pop comment messages -->
+
+<div class="modal fade" id="commentsModal1" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Comments</h5>
+                <button class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p><b>@alice:</b> Loved this 💙</p>
+                <p><b>@bob:</b> Beautifully written</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <!--query links-->
 <!-- jQery -->
 <script th:src="@{/js/jquery-3.4.1.min.js}"></script>
-<!-- popper js -->
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
-</script>
-<!-- bootstrap js -->
 <script th:src="@{/js/bootstrap.js}"></script>
-<!-- owl slider -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js">
-</script>
-<!-- isotope js -->
-<script src="https://unpkg.com/isotope-layout@3.0.4/dist/isotope.pkgd.min.js"></script>
-<!-- nice select -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js"></script>
-<!-- custom js -->
 <script th:src="@{/js/custom.js}"></script>
+<script th:src="@{js/pagination.js}"></script>
 </body>
 
 </html>

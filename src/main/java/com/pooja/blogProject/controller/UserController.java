@@ -2,6 +2,7 @@ package com.pooja.blogProject.controller;
 
 import com.pooja.blogProject.Util.OtpGenerator;
 import com.pooja.blogProject.dto.AccountInfoDto;
+import com.pooja.blogProject.dto.BlogCardDto;
 import com.pooja.blogProject.dto.PasswordDto;
 import com.pooja.blogProject.dto.PersonalInfoDto;
 import com.pooja.blogProject.model.PasswordResetToken;
@@ -12,15 +13,14 @@ import com.pooja.blogProject.service.UserService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.nio.file.Files;
 import java.time.LocalDateTime;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 @RequestMapping("/user")
 @Controller
@@ -55,11 +55,6 @@ public class UserController {
     {
         userService.registerUser(user);
         return "redirect:/user/login" ;
-    }
-
-    @GetMapping("/home")
-    public String home() {
-        return "home";
     }
 
 //

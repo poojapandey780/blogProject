@@ -23,28 +23,32 @@
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav  mx-auto ">
-                    <li class="nav-item active">
-                        <a class="nav-link" th:href="@{/user/home}">Home <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" th:href="@{/user/profile}">profile <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item" th:if="${loggedInUser == null}">
-                        <a class="nav-link"th:href="@{/user/login}">login</a>
-                    </li>
-                    <li class="nav-item" th:if="${loggedInUser == null}">
-                        <a class="nav-link" th:href="@{/user/register}">Register</a>
-                    </li>
-                    <li class="nav-item" th:if="${loggedInUser != null}">
-                        <form th:action="@{/logout}"
-                              method="post"
-                              class="logout-form">
-                            <button type="submit" class="logout-link">
-                                Logout
-                            </button>
-                        </form>
-                    </li>
+                    <ul class="navbar-nav">
 
+                        <!-- Logged in -->
+                        <th:block th:if="${loggedInUser != null}">
+                            <li class="nav-item"><a class="nav-link" th:href="@{/user/home}">Home<span class="sr-only">(current)</span></a></li>
+                            <li class="nav-item"><a class="nav-link" th:href="@{/user/profile}">Profile<span class="sr-only">(current)</span></a></li>
+                            <li class="nav-item"><a class="nav-link" th:href="@{/user/home}">Followers</a></li>
+                            <li class="nav-item"><a class="nav-link" th:href="@{/user/profile}">Following</a></li>
+                            <li class="nav-item">
+                                <form th:action="@{/logout}"
+                                      method="post"
+                                      class="logout-form">
+                                    <button type="submit" class="logout-link">
+                                        Logout
+                                    </button>
+                                </form>
+                            </li>
+                        </th:block>
+
+                        <!-- Not logged in -->
+                        <th:block th:if="${loggedInUser == null}">
+                            <li class="nav-item"><a class="nav-link" th:href="@{/user/login}">Login</a></li>
+                            <li class="nav-item"><a class="nav-link" th:href="@{/user/register}">Register</a></li>
+                        </th:block>
+
+                    </ul>
 
                 </ul>
                 </div>
