@@ -92,55 +92,10 @@
             <p>Your thoughts, your voice</p>
         </div>
 
-        <div class="row" id="blogContainer">
-            <div th:replace="fragments/blog-cards :: blog-cards"></div>
+        <div class="row">
+            <div id="blogContainer"
+                 th:insert="fragments/blog-cards :: blog-cards"></div>
         </div>
-
-        <!-- pagination -->
-<!--        <div class="row mt-4" th:if="${totalPages > 1}">-->
-<!--            <div class="col text-center">-->
-
-<!--                &lt;!&ndash; Previous &ndash;&gt;-->
-<!--                <a th:if="${currentPage > 0}"-->
-<!--                   th:href="@{/user/home(page=${currentPage - 1})}"-->
-<!--                   class="btn btn-outline-secondary btn-sm mr-2">-->
-<!--                    Previous-->
-<!--                </a>-->
-
-<!--                &lt;!&ndash; Page numbers &ndash;&gt;-->
-<!--                <span th:each="i : ${#numbers.sequence(0, totalPages - 1)}">-->
-<!--            <a th:href="@{/user/home(page=${i})}"-->
-<!--               th:text="${i + 1}"-->
-<!--               th:classappend="${i == currentPage} ? 'btn-primary' : 'btn-outline-secondary'"-->
-<!--               class="btn btn-sm mx-1">-->
-<!--            </a>-->
-<!--        </span>-->
-
-<!--                &lt;!&ndash; Next &ndash;&gt;-->
-<!--                <a th:if="${currentPage < totalPages - 1}"-->
-<!--                   th:href="@{/user/home(page=${currentPage + 1})}"-->
-<!--                   class="btn btn-outline-secondary btn-sm ml-2">-->
-<!--                    Next-->
-<!--                </a>-->
-
-<!--            </div>-->
-<!--        </div>-->
-        <div class="row mt-4">
-            <div class="col text-center">
-
-                <button class="btn btn-outline-secondary btn-sm"
-                        onclick="loadBlogs(currentPage - 1)">
-                    Previous
-                </button>
-
-                <button class="btn btn-outline-secondary btn-sm"
-                        onclick="loadBlogs(currentPage + 1)">
-                    Next
-                </button>
-
-            </div>
-        </div>
-
     </div>
 </section>
 
@@ -273,8 +228,8 @@
 <!-- jQery -->
 <script th:src="@{/js/jquery-3.4.1.min.js}"></script>
 <script th:src="@{/js/bootstrap.js}"></script>
-<script th:src="@{/js/custom.js}"></script>
-<script th:src="@{js/pagination.js}"></script>
+<!--<script th:src="@{/js/custom.js}"></script>-->
+<script src="/js/pagination.js"></script>
 </body>
 
 </html>

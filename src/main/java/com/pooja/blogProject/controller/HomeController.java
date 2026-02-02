@@ -32,8 +32,9 @@ public class HomeController {
     ) {
         Page<BlogCardDto> blogPage =
                 blogService.getBlogsOfCurrentUser(userPrincipal.getUser().getId(), 0);
-
         model.addAttribute("blogs", blogPage.getContent());
+        model.addAttribute("currentPage", blogPage.getNumber());
+        model.addAttribute("totalPages", blogPage.getTotalPages());
         return "home";
     }
 
@@ -46,12 +47,16 @@ public class HomeController {
             Model model
     ) {
         Page<BlogCardDto> blogPage =
-                blogService.getBlogsOfCurrentUser(userPrincipal.getUser().getId(), page);
+                blogService.getBlogsOfCurrentUser(
+                        userPrincipal.getUser().getId(), page);
 
         model.addAttribute("blogs", blogPage.getContent());
+        model.addAttribute("currentPage", blogPage.getNumber());
+        model.addAttribute("totalPages", blogPage.getTotalPages());
 
         return "fragments/blog-cards :: blog-cards";
     }
+
 
 
 }
